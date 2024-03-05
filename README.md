@@ -1,108 +1,89 @@
-# Welcome to the AI-on-the-edge-device
-<img src="images/icon/watermeter.svg" width="100px">
-
-Artificial intelligence based systems have become established in our everyday lives. Just think of speech or image recognition. Most of the systems rely on either powerful processors or a direct connection to the cloud for doing the calculations there. With the increasing power of modern processors, the AI systems are coming closer to the end user – which is usually called **edge computing**.
-Here, this edge computing is put into a practically oriented example, where an AI network is implemented on an ESP32 device so: **AI on the edge**.
-
-This project allows you to digitize your **analog** water, gas, power and other meters using cheap and easily available hardware.
-
-All you need is an [ESP32 board with a supported camera](https://jomjol.github.io/AI-on-the-edge-device-docs/Hardware-Compatibility/) and something of a practical hand.
-
-<img src="images/esp32-cam.png" width="200px">
-
-## Key features
-- Tensorflow Lite (TFlite) integration – including easy-to-use wrapper
-- Inline image processing (feature detection, alignment, ROI extraction)
-- **Small** and **cheap** device (3 x 4.5 x 2 cm³, < 10 EUR)
-- Integrated camera and illumination
-- Web interface for administration and control
-- OTA interface for updating directly via the web interface
-- Full integration into Homeassistant
-- Support for Influx DB 1 and 2
-- MQTT
-- REST API
-
-## Workflow
-The device takes a photo of your meter at a defined interval. It then extracts the Regions of Interest (ROIs) from the image and runs them through artificial intelligence. As a result, you get the digitized value of your meter.
-
-There are several options for what to do with that value. Either send it to an MQTT broker, write it to an InfluxDb or simply provide access to it via a REST API.
-
-<img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/idea.jpg" width="600"> 
-
-## Impressions
-### AI-on-the-edge-device on a Water Meter
-<img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/watermeter_all.jpg" width="200"><img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/main.jpg" width="200"><img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/size.png" width="200"> 
-
-### Web Interface (Water Meter)
-<img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/watermeter.jpg" width="600"> 
-
-### AI-on-the-edge-device on a Electrical Power Meter
-<img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/powermeter.jpg" width="600"> 
-
-
-## Setup
-There is growing [documentation](https://jomjol.github.io/AI-on-the-edge-device-docs/) which provides you with a lot of information. Head there to get a start, set it up and configure it.
-
-There are also articles in the German Heise magazine "make:" about the setup and technical background (behind a paywall): [DIY - Setup](https://www.heise.de/select/make/2021/2/2103513300897420296)
-
-A lot of people created useful Youtube videos which might help you getting started.
-Here a small selection:
-
-- [youtube.com/watch?v=HKBofb1cnNc](https://www.youtube.com/watch?v=HKBofb1cnNc)
-- [youtube.com/watch?v=yyf0ORNLCk4](https://www.youtube.com/watch?v=yyf0ORNLCk4)
-- [youtube.com/watch?v=XxmTubGek6M](https://www.youtube.com/watch?v=XxmTubGek6M)
-- [youtube.com/watch?v=mDIJEyElkAU](https://www.youtube.com/watch?v=mDIJEyElkAU)
-- [youtube.com/watch?v=SssiPkyKVVs](https://www.youtube.com/watch?v=SssiPkyKVVs)
-- [youtube.com/watch?v=MAHE_QyHZFQ](https://www.youtube.com/watch?v=MAHE_QyHZFQ)
-- [youtube.com/watch?v=Uap_6bwtILQ](https://www.youtube.com/watch?v=Uap_6bwtILQ)
-
-For further background information, head to [Neural Networks](https://www.heise.de/select/make/2021/6/2126410443385102621), [Training Neural Networks](https://www.heise.de/select/make/2022/1/2134114065999161585) and [Programming on the ESP32](https://www.heise.de/select/make/2022/2/2204010051597422030).
-
-### Download
-The latest available version can be found on the [Releases page](https://github.com/jomjol/AI-on-the-edge-device/releases).
-
-### Flashing the ESP32
-Initially you will have to flash the ESP32 via a USB connection. Later updates are possible directly over the air (OTA using WIFI).
-
-There are different ways to flash your ESP32:
-- The prefered way is the [Web Installer and Console](https://jomjol.github.io/AI-on-the-edge-device/index.html) which is a browser-based tool to flash the ESP32 and extract the log over USB:
-![](images/web-installer.png)
-- Flash Tool from Espressif
-- ESPtool (command-line tool)
-
-See the [documentation](https://jomjol.github.io/AI-on-the-edge-device-docs/Installation/) for more information.
-
-### Flashing the SD Card
-The SD card can be setup automatically after the firmware got installed. See the [documentation](https://jomjol.github.io/AI-on-the-edge-device-docs/Installation/#remote-setup-using-the-built-in-access-point) for details. For this to work, the SD card must be FAT formated (which is the default on a new SD card).
-Alternatively the SD card still can be setup manually, see the [documentation](https://jomjol.github.io/AI-on-the-edge-device-docs/Installation/#3-sd-card) for details!
-
-## Casing
-Various 3D-printable housing can be found here:
-  - https://www.thingiverse.com/thing:4573481 (Water Meter)
-  - https://www.thingiverse.com/thing:5028229 (Power Meter)
-  - https://www.thingiverse.com/thing:5224101 (Gas Meter)
-  - https://www.thingiverse.com/thing:4571627 (ESP32-cam housing only)
-
-## Donate
-If you would like to support the developer with a cup of coffee, you can do that via [PayPal](https://www.paypal.com/donate?hosted_button_id=8TRSVYNYKDSWL).
-
-<a href="https://www.paypal.com/donate?hosted_button_id=8TRSVYNYKDSWL"><img border="0" src="images/paypal.png" width="200px" target="_blank"></a>
-
-## Support
-If you have any technical problems please search the [discussions](https://github.com/jomjol/AI-on-the-edge-device/discussions). In case you found a ug or have a feature request, please open an [issue](https://github.com/jomjol/AI-on-the-edge-device/issues).
-
-In other cases you can contact the developer via email: <img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/mail.jpg" height="25">
-
-## Changes and History 
-See [Changelog](Changelog.md).
-
-## Build It Yourself
-See [Build Instructions](code/README.md).
-
-## Tools
-* Logfile downloader and combiner (Thx to [reserve85](https://github.com/reserve85))
-  * Files see ['/tools/logfile-tool'](tbd), how-to see [documentation](https://jomjol.github.io/AI-on-the-edge-device-docs/outdated--Gasmeter-Log-Downloader/)
-
-## Additional Ideas
-There are some ideas and feature requests which are not currently being pursued – mainly due to capacity reasons on the part of the developers.
-They features are collected in the [issues](https://github.com/jomjol/AI-on-the-edge-device/issues) and in [FeatureRequest.md](FeatureRequest.md).
+<div class="Box-sc-g0xbh4-0 bJMeLZ js-snippet-clipboard-copy-unpositioned" data-hpc="true"><article class="markdown-body entry-content container-lg" itemprop="text"><div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">欢迎使用边缘人工智能设备</font></font></h1><a id="user-content-welcome-to-the-ai-on-the-edge-device" class="anchor-element" aria-label="永久链接：欢迎使用边缘人工智能设备" href="#welcome-to-the-ai-on-the-edge-device"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="/jomjol/AI-on-the-edge-device/blob/rolling/images/icon/watermeter.svg"><img src="/jomjol/AI-on-the-edge-device/raw/rolling/images/icon/watermeter.svg" width="100px" style="max-width: 100%;"></a></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基于人工智能的系统已经在我们的日常生活中建立起来。</font><font style="vertical-align: inherit;">想想语音或图像识别。</font><font style="vertical-align: inherit;">大多数系统依靠强大的处理器或直接连接到云来进行计算。</font><font style="vertical-align: inherit;">随着现代处理器功能的不断增强，人工智能系统越来越接近最终用户——这通常称为</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">边缘计算</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">在这里，这种边缘计算被放入一个面向实际的示例中，其中人工智能网络在 ESP32 设备上实现，因此：</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">人工智能在边缘</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">该项目允许您使用廉价且易于获得的硬件将模拟</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">水表</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、燃气表、电力表和其他仪表数字化。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您所需要的只是一块</font></font><a href="https://jomjol.github.io/AI-on-the-edge-device-docs/Hardware-Compatibility/" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">带有支持的摄像头的 ESP32 开发板</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以及一只实用的工具。</font></font></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="/jomjol/AI-on-the-edge-device/blob/rolling/images/esp32-cam.png"><img src="/jomjol/AI-on-the-edge-device/raw/rolling/images/esp32-cam.png" width="200px" style="max-width: 100%;"></a></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主要特征</font></font></h2><a id="user-content-key-features" class="anchor-element" aria-label="永久链接：主要功能" href="#key-features"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tensorflow Lite (TFlite) 集成 – 包括易于使用的包装器</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内联图像处理（特征检测、对齐、ROI 提取）</font></font></li>
+<li><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">小型</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">且</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">便宜的</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备（3 x 4.5 x 2 cm³，&lt; 10 欧元）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">集成摄像头和照明</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于管理和控制的 Web 界面</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OTA 接口，可直接通过 Web 界面进行更新</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">完全集成到 Homeassistant</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持 Influx DB 1 和 2</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MQTT</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">休息API</font></font></li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">工作流程</font></font></h2><a id="user-content-workflow" class="anchor-element" aria-label="永久链接：工作流程" href="#workflow"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">该设备按照规定的时间间隔拍摄仪表的照片。</font><font style="vertical-align: inherit;">然后，它从图像中提取感兴趣区域 (ROI)，并通过人工智能运行它们。</font><font style="vertical-align: inherit;">结果，您获得了仪表的数字化值。</font></font></p>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对于如何处理该值有多种选择。</font><font style="vertical-align: inherit;">将其发送到 MQTT 代理、将其写入 InfluxDb 或仅通过 REST API 提供对其的访问。</font></font></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/idea.jpg"><img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/idea.jpg" width="600" style="max-width: 100%;"></a></p> 
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">印象数</font></font></h2><a id="user-content-impressions" class="anchor-element" aria-label="永久链接： 印象" href="#impressions"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">水表上的人工智能边缘设备</font></font></h3><a id="user-content-ai-on-the-edge-device-on-a-water-meter" class="anchor-element" aria-label="永久链接：水表上的人工智能边缘设备" href="#ai-on-the-edge-device-on-a-water-meter"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/watermeter_all.jpg"><img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/watermeter_all.jpg" width="200" style="max-width: 100%;"></a><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/main.jpg"><img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/main.jpg" width="200" style="max-width: 100%;"></a><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/size.png"><img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/size.png" width="200" style="max-width: 100%;"></a></p>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网页界面（水表）</font></font></h3><a id="user-content-web-interface-water-meter" class="anchor-element" aria-label="永久链接：Web 界面（水表）" href="#web-interface-water-meter"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/watermeter.jpg"><img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/watermeter.jpg" width="600" style="max-width: 100%;"></a></p> 
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电表上的人工智能边缘设备</font></font></h3><a id="user-content-ai-on-the-edge-device-on-a-electrical-power-meter" class="anchor-element" aria-label="永久链接：电表上的人工智能边缘设备" href="#ai-on-the-edge-device-on-a-electrical-power-meter"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/powermeter.jpg"><img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/powermeter.jpg" width="600" style="max-width: 100%;"></a></p> 
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Setup</h2><a id="user-content-setup" class="anchor-element" aria-label="永久链接：设置" href="#setup"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">There is growing <a href="https://jomjol.github.io/AI-on-the-edge-device-docs/" rel="nofollow">documentation</a> which provides you with a lot of information. Head there to get a start, set it up and configure it.</p>
+<p dir="auto">There are also articles in the German Heise magazine "make:" about the setup and technical background (behind a paywall): <a href="https://www.heise.de/select/make/2021/2/2103513300897420296" rel="nofollow">DIY - Setup</a></p>
+<p dir="auto">A lot of people created useful Youtube videos which might help you getting started.
+Here a small selection:</p>
+<ul dir="auto">
+<li><a href="https://www.youtube.com/watch?v=HKBofb1cnNc" rel="nofollow">youtube.com/watch?v=HKBofb1cnNc</a></li>
+<li><a href="https://www.youtube.com/watch?v=yyf0ORNLCk4" rel="nofollow">youtube.com/watch?v=yyf0ORNLCk4</a></li>
+<li><a href="https://www.youtube.com/watch?v=XxmTubGek6M" rel="nofollow">youtube.com/watch?v=XxmTubGek6M</a></li>
+<li><a href="https://www.youtube.com/watch?v=mDIJEyElkAU" rel="nofollow">youtube.com/watch?v=mDIJEyElkAU</a></li>
+<li><a href="https://www.youtube.com/watch?v=SssiPkyKVVs" rel="nofollow">youtube.com/watch?v=SssiPkyKVVs</a></li>
+<li><a href="https://www.youtube.com/watch?v=MAHE_QyHZFQ" rel="nofollow">youtube.com/watch?v=MAHE_QyHZFQ</a></li>
+<li><a href="https://www.youtube.com/watch?v=Uap_6bwtILQ" rel="nofollow">youtube.com/watch?v=Uap_6bwtILQ</a></li>
+</ul>
+<p dir="auto">For further background information, head to <a href="https://www.heise.de/select/make/2021/6/2126410443385102621" rel="nofollow">Neural Networks</a>, <a href="https://www.heise.de/select/make/2022/1/2134114065999161585" rel="nofollow">Training Neural Networks</a> and <a href="https://www.heise.de/select/make/2022/2/2204010051597422030" rel="nofollow">Programming on the ESP32</a>.</p>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Download</h3><a id="user-content-download" class="anchor-element" aria-label="永久链接： 下载" href="#download"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">The latest available version can be found on the <a href="https://github.com/jomjol/AI-on-the-edge-device/releases">Releases page</a>.</p>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Flashing the ESP32</h3><a id="user-content-flashing-the-esp32" class="anchor-element" aria-label="永久链接：刷新 ESP32" href="#flashing-the-esp32"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Initially you will have to flash the ESP32 via a USB connection. Later updates are possible directly over the air (OTA using WIFI).</p>
+<p dir="auto">There are different ways to flash your ESP32:</p>
+<ul dir="auto">
+<li>The prefered way is the <a href="https://jomjol.github.io/AI-on-the-edge-device/index.html" rel="nofollow">Web Installer and Console</a> which is a browser-based tool to flash the ESP32 and extract the log over USB:
+<a target="_blank" rel="noopener noreferrer" href="/jomjol/AI-on-the-edge-device/blob/rolling/images/web-installer.png"><img src="/jomjol/AI-on-the-edge-device/raw/rolling/images/web-installer.png" alt="" style="max-width: 100%;"></a></li>
+<li>Flash Tool from Espressif</li>
+<li>ESPtool (command-line tool)</li>
+</ul>
+<p dir="auto">See the <a href="https://jomjol.github.io/AI-on-the-edge-device-docs/Installation/" rel="nofollow">documentation</a> for more information.</p>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Flashing the SD Card</h3><a id="user-content-flashing-the-sd-card" class="anchor-element" aria-label="永久链接：刷新 SD 卡" href="#flashing-the-sd-card"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">The SD card can be setup automatically after the firmware got installed. See the <a href="https://jomjol.github.io/AI-on-the-edge-device-docs/Installation/#remote-setup-using-the-built-in-access-point" rel="nofollow">documentation</a> for details. For this to work, the SD card must be FAT formated (which is the default on a new SD card).
+Alternatively the SD card still can be setup manually, see the <a href="https://jomjol.github.io/AI-on-the-edge-device-docs/Installation/#3-sd-card" rel="nofollow">documentation</a> for details!</p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Casing</h2><a id="user-content-casing" class="anchor-element" aria-label="永久链接：外壳" href="#casing"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Various 3D-printable housing can be found here:</p>
+<ul dir="auto">
+<li><a href="https://www.thingiverse.com/thing:4573481" rel="nofollow">https://www.thingiverse.com/thing:4573481</a> (Water Meter)</li>
+<li><a href="https://www.thingiverse.com/thing:5028229" rel="nofollow">https://www.thingiverse.com/thing:5028229</a> (Power Meter)</li>
+<li><a href="https://www.thingiverse.com/thing:5224101" rel="nofollow">https://www.thingiverse.com/thing:5224101</a> (Gas Meter)</li>
+<li><a href="https://www.thingiverse.com/thing:4571627" rel="nofollow">https://www.thingiverse.com/thing:4571627</a> (ESP32-cam housing only)</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Donate</h2><a id="user-content-donate" class="anchor-element" aria-label="永久链接： 捐赠" href="#donate"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">If you would like to support the developer with a cup of coffee, you can do that via <a href="https://www.paypal.com/donate?hosted_button_id=8TRSVYNYKDSWL" rel="nofollow">PayPal</a>.</p>
+<p dir="auto"><a href="https://www.paypal.com/donate?hosted_button_id=8TRSVYNYKDSWL" rel="nofollow"><img border="0" src="/jomjol/AI-on-the-edge-device/raw/rolling/images/paypal.png" width="200px" style="max-width: 100%;"></a></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Support</h2><a id="user-content-support" class="anchor-element" aria-label="永久链接： 支持" href="#support"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">If you have any technical problems please search the <a href="https://github.com/jomjol/AI-on-the-edge-device/discussions">discussions</a>. In case you found a ug or have a feature request, please open an <a href="https://github.com/jomjol/AI-on-the-edge-device/issues">issue</a>.</p>
+<p dir="auto">In other cases you can contact the developer via email: <a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/mail.jpg"><img src="https://raw.githubusercontent.com/jomjol/AI-on-the-edge-device/master/images/mail.jpg" height="25" style="max-width: 100%;"></a></p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Changes and History</h2><a id="user-content-changes-and-history" class="anchor-element" aria-label="永久链接：变化和历史" href="#changes-and-history"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">See <a href="/jomjol/AI-on-the-edge-device/blob/rolling/Changelog.md">Changelog</a>.</p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Build It Yourself</h2><a id="user-content-build-it-yourself" class="anchor-element" aria-label="永久链接：自己构建" href="#build-it-yourself"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">See <a href="/jomjol/AI-on-the-edge-device/blob/rolling/code/README.md">Build Instructions</a>.</p>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Tools</h2><a id="user-content-tools" class="anchor-element" aria-label="永久链接：工具" href="#tools"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Logfile downloader and combiner (Thx to <a href="https://github.com/reserve85">reserve85</a>)
+<ul dir="auto">
+<li>Files see <a href="/jomjol/AI-on-the-edge-device/blob/rolling/tbd">'/tools/logfile-tool'</a>, how-to see <a href="https://jomjol.github.io/AI-on-the-edge-device-docs/outdated--Gasmeter-Log-Downloader/" rel="nofollow">documentation</a></li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Additional Ideas</h2><a id="user-content-additional-ideas" class="anchor-element" aria-label="永久链接：其他想法" href="#additional-ideas"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有一些想法和功能请求目前尚未得到实现——主要是由于开发人员的能力原因。</font><font style="vertical-align: inherit;">它们的功能收集在</font></font><a href="https://github.com/jomjol/AI-on-the-edge-device/issues"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">问题</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><a href="/jomjol/AI-on-the-edge-device/blob/rolling/FeatureRequest.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FeatureRequest.md</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中。</font></font></p>
+</article></div>
